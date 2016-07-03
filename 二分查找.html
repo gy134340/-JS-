@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<script>
+function sortNumber(a,b){
+	return a-b;
+}
+function search(array,min,max,target){
+	var average = (max+min)/2;
+	var guess = Math.floor(average);
+	if(max>=min){
+		if(array[guess] === target){
+			console.log(guess,array[guess],target,min,max);
+			return guess;
+		}else if(array[guess]<target){
+			min = guess;
+			return search(array,min,max,target);
+		}else if(array[guess]>target){
+			max = guess;
+			return search(array,min,max,target);
+		}
+	}else{
+		return -1;
+	}
+}
+
+
+// test
+var arr = [1,9,8,20,17,3,10,15,16];
+arr.sort(sortNumber);
+var min = 0;
+var max = arr.length - 1;
+var num = search(arr,min,max,3);
+console.log(arr);
+console.log(num);
+
+</script>
+</body>
+</html>
